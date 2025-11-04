@@ -1,0 +1,38 @@
+name: CI for mydjango-auth
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"] # Тестируем на разных версиях Python
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # Клонируем репозиторий
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5 # Устанавливаем нужную версию Python
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip' # Включаем кеширование зависимостей pip
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt # Устанавливаем все зависимости из requirements.txt
+        pip install pytest flake8 # Дополнительно устанавливаем pytest и flake8 (если их нет в requirements.txt)
+
+    - name: Check code with Flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics # Запускаем flake8 для проверки синтаксиса
+      # --count: показать количество ошибок
+      # --select=E9,F63,F7,F82: ограничиваемся определенными категориями ошибок (например, синтаксические)
+      # --show-source: показать строку с ошибкой
+      # --statistics: показать статистику ошибок
+
+    - name: Run Pytest
+      run: |
+        pytest # Запускаем все тесты, найденные pytest
