@@ -10,5 +10,5 @@ urlpatterns = [
     path('signin', views.signin_view, name='signin'),
     path('logout-confirm', views.logout_confirm, name='logout-confirm'),
     path('logout', LogoutView.as_view(), name='logout'),
-    path('profile', views.profile_view, name='profile'), # добавил путь
+    path('profile', views.profile_view, name='profile'),  # добавил путь
 ]

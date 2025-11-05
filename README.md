@@ -17,18 +17,7 @@ Run
 ---
 
 ```bash
-python manage.py runserver 0.0.0.0:80
+python manage.py runserver
 ```
 
-Open in browser: [http://localhost](http://localhost)
-
-Note.<br/>
-`sudo` maybe needed to run on 80 port: `sudo python manage.py runserver 0.0.0.0:80`.
-
-If there are troubles running on 80 port, run on port 8000:
-```bash
-python manage.py runserver 0.0.0.0:8000
-```
-and open in browser: [http://localhost:8000](http://localhost:8000)
-
-But in that case some of oauth providers may not work.
+Open in browser: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
