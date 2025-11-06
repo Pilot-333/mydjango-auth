@@ -43,4 +43,4 @@ jobs:
 
     - name: Run Pytest
       run: |
-        pytest # Запускаем все тесты, найденные pytest
+        pytest users/tests/tests_all.py -v # Запускаем все тесты, найденные pytest
