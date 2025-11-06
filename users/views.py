@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required # это декоратор, который запускает вложенную функцию только для
-# авторизованных пользователей. Иначе возвращает на страницу login (в settings.py LOGIN_URL = 'login')
+from django.contrib.auth.decorators import login_required  # это декоратор,
+# кот. запускает вложенную ф-ию только для авторизованных пользователей.
+# Иначе возвращает на страницу login (в settings.py LOGIN_URL = 'login')
 
 
 def home_view(request):
@@ -18,7 +19,8 @@ def login_view(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user:
-                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                login(request, user,
+                      backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('home')
 
     else:
@@ -32,7 +34,8 @@ def signin_view(request):
 
         if form.is_valid():
             user = form.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, user,
+                  backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')
 
     else:

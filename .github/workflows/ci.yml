@@ -22,12 +22,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt # Устанавливаем все зависимости из requirements.txt
-        pip install pytest flake8 # Дополнительно устанавливаем pytest и flake8 (если их нет в requirements.txt)
+        pip install -r requirements.txt  # Устанавливаем все зависимости из requirements.txt
 
     - name: Check code with Flake8
       run: |
-        flake8 . --count --select=E302,E303,F63,F7,F82 --show-source --statistics # Запускаем flake8 для проверки синтаксиса
+        flake8 . --count --show-source --statistics # Запускаем flake8 для проверки синтаксиса
       # --count: показать количество ошибок
       # --select=E9,F63,F7,F82: ограничиваемся определенными категориями ошибок (например, синтаксические)
       # --show-source: показать строку с ошибкой

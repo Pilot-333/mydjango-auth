@@ -6,7 +6,7 @@ colorama==0.4.6
 cryptography==46.0.3
 Django==5.2.7
 django-allauth==65.12.1
-flake8==7.3.0
+flake8==6.1.0
 idna==3.11
 iniconfig==2.3.0
 mccabe==0.7.0
