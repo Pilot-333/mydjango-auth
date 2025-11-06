@@ -24,6 +24,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt  # Устанавливаем все зависимости из requirements.txt
 
+    - name: Debug - Check installed packages
+      run: |
+        echo "=== Installed packages ==="
+        pip list  # покажет полный список всех установленных пакетов
+        echo "=== Checking flake8 ==="
+        pip list | grep flake8  # покажет только пакеты, связанные с flake8
+        echo "=== Checking pytest ==="
+        pip list | grep pytest  # покажет только пакеты, связанные с pytest
+
     - name: Check code with Flake8
       run: |
         flake8 . --count --show-source --statistics # Запускаем flake8 для проверки синтаксиса
